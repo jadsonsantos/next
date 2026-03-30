@@ -8,6 +8,7 @@ export default function Imc() {
 
   const calculateImc = () => {
     const heigthFormatted = Number(heigth) / 100
+
     const total = (
       Number(weigth) /
       (heigthFormatted * heigthFormatted)
@@ -18,15 +19,15 @@ export default function Imc() {
 
   return (
     <>
-      <label>Altura</label>
+      <label>Altura (cm)</label>
       <input
-        type="text"
+        type="number"
         value={heigth}
         onChange={(event) => setHeigth(event.target.value)}
       />
-      <label>Peso</label>
+      <label>Peso (kg)</label>
       <input
-        type="text"
+        type="number"
         value={weigth}
         onChange={(event) => setWeigth(event.target.value)}
       />
