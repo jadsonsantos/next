@@ -5,8 +5,6 @@ type Curso = {
   descricao: string
   total_aulas: number
   total_horas: number
-  error?: string
-  aulas: Aula[]
 }
 
 type Aula = {

@@ -8,22 +8,22 @@ type Props = {
 }
 
 export default async function CursoPage({ params }: Props) {
-  const data = await getCurso(params.curso)
+  const curso = await getCurso(params.curso)
 
-  if (data.error === 'Curso não encontrado') {
-    return <p>Curso não encontrado</p>
+  if ('error' in curso) {
+    return <main><p>{curso.error}</p></main>
   }
 
   return (
     <main>
-      <h1>{data.nome}</h1>
-      <p>{data.descricao}</p>
-      <p>Total de aulas: {data.total_aulas}</p>
-      <p>Total de horas: {data.total_horas}</p>
+      <h1>{curso.nome}</h1>
+      <p>{curso.descricao}</p>
+      <p>Total de aulas: {curso.total_aulas}</p>
+      <p>Total de horas: {curso.total_horas}</p>
 
       <h2>Aulas</h2>
       <ul>
-        {data.aulas.map((aula) => (
+        {curso.aulas.map((aula) => (
           <li key={aula.slug}>
             <Link href={`/cursos/${params.curso}/${aula.slug}`}>
               {aula.nome}
